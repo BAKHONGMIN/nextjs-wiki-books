@@ -1,5 +1,5 @@
-import { styled } from "styled-components"
-import { Responsive } from "@/types"
+/* eslint-disable prettier/prettier */
+import {styled} from 'styled-components'
 import {
   toPropValue,
   Color,
@@ -7,9 +7,11 @@ import {
   LetterSpacing,
   LineHeight,
   Space,
-} from "@/utils/styles"
+} from '../../../utils/styles'
+import { Responsive } from '@/types'
 
-export type ButtonVariant = "primary" | "secondary" | "danger"
+// 버튼 변형
+export type ButtonVariant = 'primary' | 'secondary' | 'danger'
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
@@ -30,7 +32,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   margin?: Responsive<Space>
   marginTop?: Responsive<Space>
   marginRight?: Responsive<Space>
-  marginBottom: Responsive<Space>
+  marginBottom?: Responsive<Space>
+  marginLeft?: Responsive<Space>
   padding?: Responsive<Space>
   paddingTop?: Responsive<Space>
   paddingRight?: Responsive<Space>
@@ -38,59 +41,62 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   paddingLeft?: Responsive<Space>
   pseudoClass?: {
     hover?: {
-      backgoundColor?: Responsive<Color>
+      backgroundColor?: Responsive<Color>
     }
     disabled?: {
       backgroundColor?: Responsive<Color>
     }
   }
 }
+
 const variants = {
-  //Primary
+  // Primary
   primary: {
-    color: "white",
-    backgroundColor: "primary",
-    border: "none",
+    color: 'white',
+    backgroundColor: 'primary',
+    border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: "primaryDark",
+        backgroundColor: 'primaryDark',
       },
       disabled: {
-        backgroundColor: "primary",
+        backgroundColor: 'primary',
       },
     },
   },
+  // Secondary
   secondary: {
-    color: "white",
-    backgroundColor: "secondary",
-    border: "none",
+    color: 'white',
+    backgroundColor: 'secondary',
+    border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: "secondaryDark",
+        backgroundColor: 'secondaryDark',
       },
       disabled: {
-        backgroundColor: "secondary",
+        backgroundColor: 'secondary',
       },
     },
   },
+  // Danger
   danger: {
-    color: "white",
-    backgroundColor: "danger",
-    border: "none",
+    color: 'white',
+    backgroundColor: 'danger',
+    border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: "dangerDark",
+        backgroundColor: 'dangerDark',
       },
       disabled: {
-        backgroundColor: "danger",
+        backgroundColor: 'danger',
       },
     },
   },
 }
 
 /**
- *  버튼
- *  변형, 색상, 타이포크래피, 레이아웃, 스페이스 관련 props 추가
+ * 버튼
+ * 변형, 색생, 타이포그래피, 레이아웃, 스페이스 관련 Props 추가
  */
 const Button = styled.button<ButtonProps>`
   ${({ variant, color, backgroundColor, pseudoClass, theme }) => {
@@ -98,11 +104,11 @@ const Button = styled.button<ButtonProps>`
     if (variant && variants[variant]) {
       const styles = []
       !color &&
-        styles.push(toPropValue("color", variants[variant].color, theme))
+        styles.push(toPropValue('color', variants[variant].color, theme))
       !backgroundColor &&
         styles.push(
           toPropValue(
-            "background-color",
+            'background-color',
             variants[variant].backgroundColor,
             theme,
           ),
@@ -110,82 +116,81 @@ const Button = styled.button<ButtonProps>`
       !pseudoClass &&
         styles.push(
           `&:hover {
-        ${toPropValue(
-          "background-color",
-          variants[variant].pseudoClass.hover.backgroundColor,
-          theme,
-        )}
-       }`.replaceAll("\n", ""),
+            ${toPropValue(
+              'background-color',
+              variants[variant].pseudoClass.hover.backgroundColor,
+              theme,
+            )}
+          }`.replaceAll('\n', ''),
         )
       !pseudoClass &&
         styles.push(
-          `&:disabled{${toPropValue(
-            "background-color",
-            variants[variant].pseudoClass.disabled.backgroundColor,
-            theme,
-          )}}`.replaceAll("\n", ""),
+          `&:disabled {
+            ${toPropValue(
+              'background-color',
+              variants[variant].pseudoClass.disabled.backgroundColor,
+              theme,
+            )}
+          }`.replaceAll('\n', ''),
         )
-      return styles.join("\n")
+      return styles.join('\n')
     }
   }}
-  ${(props) => toPropValue("font-size", props.fontSize, props.theme)}
-  ${(props) => toPropValue("letter-spacing", props.letterSpacing, props.theme)}
-  ${(props) => toPropValue("line-height", props.lineHeight, props.theme)}
-  ${(props) => toPropValue("color", props.color, props.theme)}
-  ${(props) =>
-    toPropValue("backgound-color", props.backgroundColor, props.theme)}
-  ${(props) => toPropValue("width", props.width, props.theme)}
-  ${(props) => toPropValue("height", props.height, props.theme)}
-  ${(props) => toPropValue("min-widht", props.minWidth, props.theme)}
-  ${(props) => toPropValue("min-height", props.minHeight, props.theme)}
-  ${(props) => toPropValue("display", props.display, props.theme)}
-  ${(props) => toPropValue("border", props.border, props.theme)}
-  ${(props) => toPropValue("overflow", props.overflow, props.theme)}
-  ${(props) => toPropValue("font-size", props.fontSize, props.theme)}
-
-  ${(props) => toPropValue("margin", props.margin, props.theme)}
-  ${(props) => toPropValue("margin-top", props.marginTop, props.theme)}
-  ${(props) => toPropValue("margin-right", props.marginRight, props.theme)}
-  ${(props) => toPropValue("margin-bottom", props.marginBottom, props.theme)}
-  ${(props) => toPropValue("padding", props.padding, props.theme)}
-  ${(props) => toPropValue("padding-top", props.paddingTop, props.theme)}
-  ${(props) => toPropValue("padding-right", props.paddingRight, props.theme)}
-  ${(props) => toPropValue("padding-bottom", props.paddingBottom, props.theme)}
-  ${(props) => toPropValue("padding-left", props.paddingLeft, props.theme)}
-  ${(props) => toPropValue("padding-right", props.paddingRight, props.theme)}
+  ${(props) => toPropValue('font-size', props.fontSize, props.theme)}
+  ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
+  ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
+  ${(props) => toPropValue('color', props.color, props.theme)}
+  ${(props) => toPropValue('background-color', props.backgroundColor, props.theme)}
+  ${(props) => toPropValue('width', props.width, props.theme)}
+  ${(props) => toPropValue('height', props.height, props.theme)}
+  ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
+  ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
+  ${(props) => toPropValue('display', props.display, props.theme)}
+  ${(props) => toPropValue('border', props.border, props.theme)}
+  ${(props) => toPropValue('overflow', props.overflow, props.theme)}
+  ${(props) => toPropValue('margin', props.margin, props.theme)}
+  ${(props) => toPropValue('margin-top', props.marginTop, props.theme)}
+  ${(props) => toPropValue('margin-left', props.marginLeft, props.theme)}
+  ${(props) => toPropValue('margin-bottom', props.marginBottom, props.theme)}
+  ${(props) => toPropValue('margin-right', props.marginRight, props.theme)}
+  ${(props) => toPropValue('padding', props.padding, props.theme)}
+  ${(props) => toPropValue('padding-top', props.paddingTop, props.theme)}
+  ${(props) => toPropValue('padding-left', props.paddingLeft, props.theme)}
+  ${(props) => toPropValue('padding-bottom', props.paddingBottom, props.theme)}
+  ${(props) => toPropValue('padding-right', props.paddingRight, props.theme)}
   &:hover {
     ${(props) =>
       toPropValue(
-        "background-color",
-        props?.pseudoClass?.hover?.backgoundColor,
+        'background-color',
+        props?.pseudoClass?.hover?.backgroundColor,
       )}
   }
   &:disabled {
     ${(props) =>
       toPropValue(
-        "background-color",
+        'background-color',
         props?.pseudoClass?.disabled?.backgroundColor,
       )}
   }
   cursor: pointer;
   outline: 0;
-  text-decoration: "none";
-  opacity: ${({ disabled }) => (disabled ? "0.5" : "1")};
+  text-decoration: 'none';
+  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   border-radius: 4px;
   border: none;
 `
 
 Button.defaultProps = {
-  variant: "primary",
+  variant: 'primary',
   paddingLeft: 2,
   paddingRight: 2,
   paddingTop: 1,
   paddingBottom: 1,
-  color: "white",
-  display: "inline-block",
-  textAlign: "center",
-  lineHeight: "inherit",
-  fontSize: "inherit",
+  color: 'white',
+  display: 'inline-block',
+  textAlign: 'center',
+  lineHeight: 'inherit',
+  fontSize: 'inherit',
 }
 
 export default Button

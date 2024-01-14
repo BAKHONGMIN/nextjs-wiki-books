@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
-import Box, { BoxProps } from "@/components/layout/Box"
+import { toPropValue } from "../../../utils/styles"
+import Box, { BoxProps } from "../Box"
 import type {
   CSSPropertyGridArea,
   CSSPropertyGridAutoFlow,
@@ -7,7 +8,6 @@ import type {
   CSSPropertyGridRow,
   Responsive,
 } from "@/types"
-import { toPropValue } from "@/utils/styles"
 
 type GridProps = BoxProps & {
   gridGap?: Responsive<string>
