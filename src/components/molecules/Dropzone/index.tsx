@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react"
 import { styled } from "styled-components"
-import { CloudUploadIcon } from "@/components/atoms/IconButton"
+import { CloudUploadIcon } from "../../../components/atoms/IconButton"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isDragEvt = (value: any): value is React.DragEvent => {
@@ -13,7 +13,7 @@ const isInput = (value: EventTarget | null): value is HTMLInputElement => {
 
 /**
  * 이벤트로부터 입력된 파일을 얻는다
- * @param e DragEvent 또는 ChangeEvent
+ * @param e DragEventかChangeEvent
  * @returns File의 배열
  */
 const getFilesFromEvent = (e: React.DragEvent | React.ChangeEvent): File[] => {
@@ -26,6 +26,7 @@ const getFilesFromEvent = (e: React.DragEvent | React.ChangeEvent): File[] => {
   return []
 }
 
+// 파일의 Content-Type
 type FileType =
   | "image/png"
   | "image/jpeg"
@@ -41,7 +42,7 @@ interface DropzoneProps {
    */
   value?: File[]
   /**
-   * <input /> 의 name 속성
+   * <input />의 name 속성
    */
   name?: string
   /**
@@ -63,11 +64,11 @@ interface DropzoneProps {
   /**
    * 파일이 드롭 입력되었을 때의 이벤트 핸들러
    */
-  onDrop?: (file: File[]) => void
+  onDrop?: (files: File[]) => void
   /**
-   * 파일이 입력되었을때 의 이벤트 핸들러
+   * 파일이 입력되었을 때의 이벤트 핸들러
    */
-  onChange: (files: File[]) => void
+  onChange?: (files: File[]) => void
 }
 
 type DropzoneRootProps = {
@@ -77,7 +78,7 @@ type DropzoneRootProps = {
   height: string | number
 }
 
-//드롭존 바깥쪽의 형태
+// 드롭존 바깥쪽의 형태
 const DropzoneRoot = styled.div<DropzoneRootProps>`
   border: 1px dashed
     ${({ theme, isFocused, hasError }) => {
@@ -93,10 +94,10 @@ const DropzoneRoot = styled.div<DropzoneRootProps>`
   cursor: pointer;
   width: ${({ width }) => (typeof width === "number" ? `${width}px` : width)};
   height: ${({ height }) =>
-    typeof height === "number" ? `${height}` : height};
+    typeof height === "number" ? `${height}px` : height};
 `
 
-//드롭존 내용
+// 드롭존 내용
 const DropzoneContent = styled.div<{
   width: string | number
   height: string | number
@@ -129,7 +130,6 @@ const Dropzone = (props: DropzoneProps) => {
     width = "100%",
     height = "200px",
   } = props
-
   const rootRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const [isFocused, setIsFocused] = useState(false)
@@ -147,7 +147,7 @@ const Dropzone = (props: DropzoneProps) => {
     onChange && onChange(files)
   }
 
-  //드래그 상태의 마우스 포인터가 범위 안에 드롭되었을때
+  // 드래그 상태의 마우스 포인터가 범위 안에 드롭되었을 때
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     e.stopPropagation()
@@ -161,7 +161,9 @@ const Dropzone = (props: DropzoneProps) => {
 
     if (files.length == 0) {
       return window.alert(
-        `다음 파일 형식을 지정할 수 없습니다.${acceptedFileTypes.join(" ,")})`,
+        `次のファイルフォーマットは指定できません${acceptedFileTypes.join(
+          " ,",
+        )})`,
       )
     }
 
@@ -169,24 +171,69 @@ const Dropzone = (props: DropzoneProps) => {
     onChange && onChange(files)
   }
 
-  //드래그 상태의 마우스 포인터가 범위 안에 있을 때
+  // 드래그 상태의 마우스 포인터가 범위 안에 있을 때
   const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     e.stopPropagation()
   }, [])
 
-  //드래그 상태의 마우스 포인터가 범위 밖으로 사라졌을대 포커스를 없앤다.
+  // 드래그 상태의 마우스 포인터가 범위 밖으로 사라졌을 때 포커스를 없앤다
   const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     e.stopPropagation()
     setIsFocused(false)
   }, [])
 
+  // 드래그 상태의 마우스 포인터가 범위 안에 들어왔을 때 포커스를 할당한다
   const handleDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     e.stopPropagation()
     setIsFocused(true)
   }, [])
 
-  //파일 선택 대화 상자를 표시한다
+  // 파일 선택 대화 상자를 표시한다
+  const handleClick = () => {
+    inputRef.current?.click()
+  }
+
+  useEffect(() => {
+    if (inputRef.current && value && value.length == 0) {
+      inputRef.current.value = ""
+    }
+  }, [value])
+
+  return (
+    <>
+      {/* 드래그 앤 드롭 이벤트를 관리한다 */}
+      <DropzoneRoot
+        ref={rootRef}
+        isFocused={isFocused}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDragEnter={handleDragEnter}
+        onClick={handleClick}
+        hasError={hasError}
+        width={width}
+        height={height}
+        data-testid="dropzone"
+      >
+        {/* 더미 입력 */}
+        <DropzoneInputFile
+          ref={inputRef}
+          type="file"
+          name={name}
+          accept={acceptedFileTypes.join(",")}
+          onChange={handleChange}
+          multiple
+        />
+        <DropzoneContent width={width} height={height}>
+          <CloudUploadIcon size={24} />
+          <span style={{ textAlign: "center" }}>기기에서 업로드</span>
+        </DropzoneContent>
+      </DropzoneRoot>
+    </>
+  )
 }
+
+export default Dropzone

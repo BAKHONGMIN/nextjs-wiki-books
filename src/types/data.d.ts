@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image"
+
 // 상품 카테고리
 export type Category = "shoes" | "clothes" | "book"
 // 상품 상태
@@ -9,7 +11,7 @@ export type User = {
   username: string
   displayName: string
   email: string
-  profileImageUrl: string
+  profileImageUrl: string | StaticImageData
   description: string
 }
 
@@ -19,7 +21,7 @@ export type Product = {
   category: Category
   title: string
   description: string
-  imageUrl: string
+  imageUrl: string | StaticImageData
   blurDataUrl: string
   price: number
   condition: Condition

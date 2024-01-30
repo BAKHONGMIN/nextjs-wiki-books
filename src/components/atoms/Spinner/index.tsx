@@ -42,7 +42,7 @@ const StyledSpinner = styled.svg<{ size: number; isAutoCentering: boolean }>`
 type SpinnerProps = {
   size?: number
   strokeWidth?: number
-  isAutoCentering: boolean
+  isAutoCentering?: boolean
 }
 
 /**
