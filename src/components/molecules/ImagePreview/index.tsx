@@ -65,7 +65,7 @@ const ImagePreview = ({
     <ImagePreviewContainer height={height} width={width}>
       <img src={src} alt={alt} height={height} width={width} />
       <CloseBox
-        alignItem="center"
+        alignitem="center"
         justifyContent="center"
         onClick={handleCloseClick}
       >

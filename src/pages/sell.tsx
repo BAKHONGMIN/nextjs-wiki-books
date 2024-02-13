@@ -25,15 +25,15 @@ const SellPage: NextPage = () => {
   return (
     <Layout>
       <Flex
-        paddingTop={{ base: 2, md: 4 }}
-        paddingBottom={{ base: 2, md: 4 }}
+        paddingtops={{ base: 2, md: 4 }}
+        paddingbottoms={{ base: 2, md: 4 }}
         justifyContent="center"
       >
         <Flex
           width="800px"
           flexDirection="column"
           justifyContent="center"
-          alignItem="center"
+          alignitem="center"
         >
           <Box display={{ base: "none", md: "block" }} marginBottom={2}>
             <AppLogo />

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {styled} from 'styled-components'
+import { Responsive } from '@/types'
 import {
   toPropValue,
   Color,
@@ -7,8 +8,7 @@ import {
   LetterSpacing,
   LineHeight,
   Space,
-} from '../../../utils/styles'
-import { Responsive } from '@/types'
+} from '@/utils/styles'
 
 // 버튼 변형
 export type ButtonVariant = 'primary' | 'secondary' | 'danger'
@@ -18,8 +18,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   fontSize?: Responsive<FontSize>
   fontWeight?: Responsive<string>
   letterSpacing?: Responsive<LetterSpacing>
-  lineHeight?: Responsive<LineHeight>
-  textAlign?: Responsive<string>
+  lineheights?: Responsive<LineHeight>
+  textaligns?: Responsive<string>
   color?: Responsive<Color>
   backgroundColor?: Responsive<Color>
   width?: Responsive<string>
@@ -35,10 +35,10 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   marginBottom?: Responsive<Space>
   marginLeft?: Responsive<Space>
   padding?: Responsive<Space>
-  paddingTop?: Responsive<Space>
-  paddingRight?: Responsive<Space>
-  paddingBottom?: Responsive<Space>
-  paddingLeft?: Responsive<Space>
+  paddingtops?: Responsive<Space>
+  paddingrights?: Responsive<Space>
+  paddingbottoms?: Responsive<Space>
+  paddinglefts?: Responsive<Space>
   pseudoClass?: {
     hover?: {
       backgroundColor?: Responsive<Color>
@@ -138,7 +138,7 @@ const Button = styled.button<ButtonProps>`
   }}
   ${(props) => toPropValue('font-size', props.fontSize, props.theme)}
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
-  ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
+  ${(props) => toPropValue('line-height', props.lineheights, props.theme)}
   ${(props) => toPropValue('color', props.color, props.theme)}
   ${(props) => toPropValue('background-color', props.backgroundColor, props.theme)}
   ${(props) => toPropValue('width', props.width, props.theme)}
@@ -154,10 +154,10 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('margin-bottom', props.marginBottom, props.theme)}
   ${(props) => toPropValue('margin-right', props.marginRight, props.theme)}
   ${(props) => toPropValue('padding', props.padding, props.theme)}
-  ${(props) => toPropValue('padding-top', props.paddingTop, props.theme)}
-  ${(props) => toPropValue('padding-left', props.paddingLeft, props.theme)}
-  ${(props) => toPropValue('padding-bottom', props.paddingBottom, props.theme)}
-  ${(props) => toPropValue('padding-right', props.paddingRight, props.theme)}
+  ${(props) => toPropValue('padding-top', props.paddingtops, props.theme)}
+  ${(props) => toPropValue('padding-left', props.paddinglefts, props.theme)}
+  ${(props) => toPropValue('padding-bottom', props.paddingbottoms, props.theme)}
+  ${(props) => toPropValue('padding-right', props.paddingrights, props.theme)}
   &:hover {
     ${(props) =>
       toPropValue(
@@ -182,14 +182,14 @@ const Button = styled.button<ButtonProps>`
 
 Button.defaultProps = {
   variant: 'primary',
-  paddingLeft: 2,
-  paddingRight: 2,
-  paddingTop: 1,
-  paddingBottom: 1,
+  paddinglefts: 2,
+  paddingrights: 2,
+  paddingtops: 1,
+  paddingbottoms: 1,
   color: 'white',
   display: 'inline-block',
-  textAlign: 'center',
-  lineHeight: 'inherit',
+  textaligns: 'center',
+  lineheights: 'inherit',
   fontSize: 'inherit',
 }
 

@@ -2,13 +2,13 @@ import { DefaultTheme } from "styled-components"
 import colors from "./colors"
 import fontSizes from "./fontSizes"
 import letterSpacings from "./letterSpacings"
-import lineHeights from "./lineHeights"
+import lineheights from "./lineheights"
 import space from "./space"
 
 export const theme: DefaultTheme = {
   space,
   fontSizes,
   letterSpacings,
-  lineHeights,
+  lineheights,
   colors,
 } as const

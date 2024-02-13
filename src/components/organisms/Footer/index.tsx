@@ -21,7 +21,7 @@ const Footer = () => {
       <Flex flexDirection={{ base: "column", md: "row" }}>
         <Box
           minWidth={{ base: "100%", md: "120%" }}
-          paddingRight={{ base: 0, md: 1 }}
+          paddingrights={{ base: 0, md: 1 }}
         >
           <nav>
             <Box marginBottom={2}>
@@ -43,7 +43,7 @@ const Footer = () => {
         </Box>
         <Box
           minWidth={{ base: "100%", md: "120px" }}
-          paddingRight={{ base: 0, md: 1 }}
+          paddingrights={{ base: 0, md: 1 }}
         >
           <nav>
             <Box marginBottom={2}>
@@ -75,7 +75,7 @@ const Footer = () => {
           </nav>
         </Box>
       </Flex>
-      <Box paddingTop={3} paddingBottom={2}>
+      <Box paddingtops={3} paddingbottoms={2}>
         <Text>© 2024 Gijutsuhyoronsha Co., Ltd.. All rights reserved.</Text>
       </Box>
     </footer>

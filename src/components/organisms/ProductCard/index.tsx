@@ -75,13 +75,13 @@ const ProductCard = ({
               as="h2"
               fontSize={{ base: "small", md: "mediumLarge" }}
               letterSpacing={{ base: 2, md: 3 }}
-              lineHeight={{ base: "32px", md: "48px" }}
+              lineheights={{ base: "32px", md: "48px" }}
               backgroundColor="white"
               margin={0}
-              paddingRight={2}
-              paddingLeft={2}
-              paddingTop={0}
-              paddingBottom={0}
+              paddingrights={2}
+              paddinglefts={2}
+              paddingtops={0}
+              paddingbottoms={0}
             >
               {title}
             </Text>
@@ -90,7 +90,7 @@ const ProductCard = ({
               fontWeight="bold"
               display="inline-block"
               letterSpacing={{ base: 2, md: 4 }}
-              lineHeight={{ base: "8px", md: "12px" }}
+              lineheights={{ base: "8px", md: "12px" }}
               backgroundColor="white"
               margin={0}
               padding={{ base: 1, md: 2 }}

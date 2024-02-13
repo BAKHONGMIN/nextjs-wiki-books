@@ -14,7 +14,7 @@ import type {
 } from "@/types/styles"
 
 type FlexProps = BoxProps & {
-  alignItem?: Responsive<CSSPropertyAlignItems>
+  alignitem?: Responsive<CSSPropertyAlignItems>
   alignContent?: Responsive<CSSPropertyAlignContent>
   justifyContent?: Responsive<CSSPropertyJustifyContent>
   justifyItems?: Responsive<CSSPropertyJustifyItems>
@@ -33,7 +33,7 @@ type FlexProps = BoxProps & {
  * flexbox 구현에 사용한다.
  */
 const Flex = styled(Box)<FlexProps>`
-  ${(props) => toPropValue("align-items", props.alignItem, props.theme)}
+  ${(props) => toPropValue("align-items", props.alignitem, props.theme)}
   ${(props) => toPropValue("align-content", props.alignContent, props.theme)}
   ${(props) =>
     toPropValue("justify-content", props.justifyContent, props.theme)}

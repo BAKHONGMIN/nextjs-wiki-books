@@ -57,10 +57,10 @@ const SearchPage: NextPage = () => {
   return (
     <Layout>
       <Box
-        paddingLeft={{ base: 2, md: 3 }}
-        paddingRight={{ base: 2, md: 3 }}
-        paddingTop={2}
-        paddingBottom={2}
+        paddinglefts={{ base: 2, md: 3 }}
+        paddingrights={{ base: 2, md: 3 }}
+        paddingtops={2}
+        paddingbottoms={2}
       >
         <Box marginBottom={1}>
           <Breadcrumb>
@@ -103,7 +103,7 @@ const SearchPage: NextPage = () => {
                 value={conditions}
                 onChange={handleChange}
               />
-              <Box paddingTop={1}>
+              <Box paddingtops={1}>
                 <Text as="h2" fontWeight="bold" variant="mediumLarge">
                   카테고리
                 </Text>

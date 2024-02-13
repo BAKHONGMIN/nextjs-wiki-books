@@ -21,7 +21,7 @@ const HomePage: NextPage<HomePageProps> = ({
     return (
       <ProductCardCarousel>
         {products.map((p: Product, i: number) => (
-          <Box paddingLeft={i === 0 ? 0 : 2} key={p.id}>
+          <Box paddinglefts={i === 0 ? 0 : 2} key={p.id}>
             <Link href={`/products/${p.id}`} passHref>
               <a>
                 <ProductCard
@@ -44,7 +44,7 @@ const HomePage: NextPage<HomePageProps> = ({
         <Flex
           width={{ base: "100%", md: "1040px" }}
           justifyContent="space-between"
-          alignItem="center"
+          alignitem="center"
           flexDirection={{ base: "column", md: "row" }}
         >
           <Box width="100%">
@@ -77,10 +77,10 @@ const HomePage: NextPage<HomePageProps> = ({
           </Box>
         </Flex>
       </Flex>
-      <Flex paddingBottom={2} justifyContent="center">
+      <Flex paddingbottoms={2} justifyContent="center">
         <Box
-          paddingLeft={{ base: 2, md: 0 }}
-          paddingRight={{ base: 2, md: 0 }}
+          paddinglefts={{ base: 2, md: 0 }}
+          paddingrights={{ base: 2, md: 0 }}
           width={{ base: "100%", md: "1040px" }}
         >
           <Box marginBottom={3}>

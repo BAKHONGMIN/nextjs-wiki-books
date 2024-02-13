@@ -85,7 +85,7 @@ const DropdownItem = (props: DropdownItemProps) => {
   const { item } = props
 
   return (
-    <Flex alignItem="center">
+    <Flex alignitem="center">
       <Text margin={0} variant="small">
         {item.label ?? item.value}
       </Text>
@@ -130,7 +130,7 @@ interface DropdownProps {
 const Dropdown = (props: DropdownProps) => {
   const { onChange, name, value, options, hasError } = props
   const initialItem = options.find((i) => i.value === value)
-  const [isOpen, setIsOpenValue] = useState(false)
+  const [isOpens, setIsOpenValue] = useState(false)
   const [selectedItem, setSelectedItem] = useState(initialItem)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -152,7 +152,7 @@ const Dropdown = (props: DropdownProps) => {
   )
 
   const handleMouseDown = (e: React.SyntheticEvent) => {
-    setIsOpenValue((isOpen) => !isOpen)
+    setIsOpenValue((isOpens) => !isOpens)
     e.stopPropagation()
   }
 
@@ -203,10 +203,10 @@ const Dropdown = (props: DropdownProps) => {
           value={selectedItem?.value ?? ""}
           onChange={() => onChange && onChange(selectedItem)}
         />
-        <DropdownArrow isOpen={isOpen} />
+        <DropdownArrow isOpen={isOpens} />
       </DropdownControl>
       {/* 드롭다운 보기 */}
-      {isOpen && (
+      {isOpens && (
         <DropdownMenu>
           {props.options.map((item, idx) => (
             <DropdownOption

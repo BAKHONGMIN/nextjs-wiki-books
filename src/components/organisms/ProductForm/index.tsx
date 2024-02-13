@@ -62,7 +62,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
           )}
         />
         {errors.image && (
-          <Text color="danger" variant="small" paddingLeft={1}>
+          <Text color="danger" variant="small" paddinglefts={1}>
             Product image is required
           </Text>
         )}
@@ -86,7 +86,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             hasError={!!errors.title}
           />
           {errors.title && (
-            <Text color="danger" variant="small" paddingLeft={1}>
+            <Text color="danger" variant="small" paddinglefts={1}>
               제목 입력은 필수입니다.
             </Text>
           )}
@@ -111,7 +111,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             )}
           />
           {errors.description && (
-            <Text color="danger" variant="small" paddingLeft={1}>
+            <Text color="danger" variant="small" paddinglefts={1}>
               개요 입력은 필수입니다
             </Text>
           )}
@@ -141,7 +141,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             )}
           />
           {errors.category && (
-            <Text color="danger" variant="small" paddingLeft={1}>
+            <Text color="danger" variant="small" paddinglefts={1}>
               카테고리 선택은 필수입니다.
             </Text>
           )}
@@ -170,7 +170,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             )}
           />
           {errors.condition && (
-            <Text color="danger" variant="small" paddingLeft={1}>
+            <Text color="danger" variant="small" paddinglefts={1}>
               상품 상태 입력은 필수입니다.
             </Text>
           )}
@@ -188,7 +188,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             hasError={!!errors.price}
           />
           {errors.price && (
-            <Text color="danger" variant="small" paddingLeft={1}>
+            <Text color="danger" variant="small" paddinglefts={1}>
               가격의 입력은 필수입니다.
             </Text>
           )}

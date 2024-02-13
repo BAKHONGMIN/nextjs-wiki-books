@@ -10,7 +10,7 @@ type SpaceThemeKeys = keyof typeof theme.space
 type ColorThemeKeys = keyof typeof theme.colors
 type FontSizeThemeKeys = keyof typeof theme.fontSizes
 type LetterSpacingThemeKeys = keyof typeof theme.letterSpacings
-type LineHeightThemeKeys = keyof typeof theme.lineHeights
+type LineHeightThemeKeys = keyof typeof theme.lineheights
 
 // 각 Theme의 키의 타입
 export type Space = SpaceThemeKeys | (string & {})
@@ -130,11 +130,11 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
     return theme.letterSpacings[value]
   } else if (
     theme &&
-    theme.lineHeights &&
+    theme.lineheights &&
     LINE_HEIGHT_KEYS.has(propKey) &&
     isLineHeightThemeKeys(value, theme)
   ) {
-    return theme.lineHeights[value]
+    return theme.lineheights[value]
   }
 
   return value
@@ -179,5 +179,5 @@ function isLineHeightThemeKeys(
   prop: any,
   theme: AppTheme,
 ): prop is LineHeightThemeKeys {
-  return Object.keys(theme.lineHeights).filter((key) => key == prop).length > 0
+  return Object.keys(theme.lineheights).filter((key) => key == prop).length > 0
 }

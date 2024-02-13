@@ -45,7 +45,7 @@ const SigninForm = ({ onSignin }: SigninFormProps) => {
           hasError={!!errors.username}
         />
         {errors.username && (
-          <Text color="danger" variant="small" paddingLeft={1}>
+          <Text color="danger" variant="small" paddinglefts={1}>
             사용자명은 필수입니다.
           </Text>
         )}
@@ -60,7 +60,7 @@ const SigninForm = ({ onSignin }: SigninFormProps) => {
           hasError={!!errors.password}
         />
         {errors.password && (
-          <Text color="danger" variant="small" paddingLeft={1}>
+          <Text color="danger" variant="small" paddinglefts={1}>
             비밀번호는 필수입니다.
           </Text>
         )}

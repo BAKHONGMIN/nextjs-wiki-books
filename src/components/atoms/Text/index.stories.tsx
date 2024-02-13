@@ -38,7 +38,7 @@ export default {
         type: { summary: "string" },
       },
     },
-    lineHeight: {
+    lineheights: {
       control: { type: "text" },
       description: "행 높이",
       table: {

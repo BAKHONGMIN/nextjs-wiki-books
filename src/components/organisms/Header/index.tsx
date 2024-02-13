@@ -52,8 +52,8 @@ const Header = () => {
 
   return (
     <HeaderRoot>
-      <Flex paddingLeft={3} paddingRight={3} justifyContent="space-between">
-        <Nav as="nav" height="56px" alignItem="center">
+      <Flex paddinglefts={3} paddingrights={3} justifyContent="space-between">
+        <Nav as="nav" height="56px" alignitem="center">
           <NavLink>
             <Link href="/" passHref>
               <Anchor as="a">
@@ -90,7 +90,7 @@ const Header = () => {
             </Box>
           </NavLink>
         </Nav>
-        <Nav as="nav" height="56px" alignItem="center">
+        <Nav as="nav" height="56px" alignitem="center">
           <NavLink>
             <Box display={{ base: "block", md: "none" }}>
               <Link href="/search" passHref>

@@ -19,10 +19,10 @@ export type BoxProps = {
   marginBottom?: Responsive<Space>
   marginLeft?: Responsive<Space>
   padding?: Responsive<Space>
-  paddingTop?: Responsive<Space>
-  paddingRight?: Responsive<Space>
-  paddingBottom?: Responsive<Space>
-  paddingLeft?: Responsive<Space>
+  paddingtops?: Responsive<Space>
+  paddingrights?: Responsive<Space>
+  paddingbottoms?: Responsive<Space>
+  paddinglefts?: Responsive<Space>
 }
 
 /**
@@ -47,9 +47,9 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue("margin-bottom", props.marginBottom, props.theme)}
   ${(props) => toPropValue("margin-right", props.marginRight, props.theme)}
   ${(props) => toPropValue("padding", props.padding, props.theme)}
-  ${(props) => toPropValue("padding-top", props.paddingTop, props.theme)}
-  ${(props) => toPropValue("padding-left", props.paddingLeft, props.theme)}
-  ${(props) => toPropValue("padding-bottom", props.paddingBottom, props.theme)}
-  ${(props) => toPropValue("padding-right", props.paddingRight, props.theme)}
+  ${(props) => toPropValue("padding-top", props.paddingtops, props.theme)}
+  ${(props) => toPropValue("padding-left", props.paddinglefts, props.theme)}
+  ${(props) => toPropValue("padding-bottom", props.paddingbottoms, props.theme)}
+  ${(props) => toPropValue("padding-right", props.paddingrights, props.theme)}
 `
 export default Box

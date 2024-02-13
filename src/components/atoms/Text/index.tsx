@@ -24,8 +24,8 @@ export type TextProps = {
   fontSize?: Responsive<FontSize>
   fontWeight?: Responsive<string>
   letterSpacing?: Responsive<LetterSpacing>
-  lineHeight?: Responsive<LineHeight>
-  textAlign?: Responsive<string>
+  lineheights?: Responsive<LineHeight>
+  textaligns?: Responsive<string>
   color?: Responsive<Color>
   backgroundColor?: Responsive<Color>
   width?: Responsive<string>
@@ -41,42 +41,42 @@ export type TextProps = {
   marginBottom?: Responsive<Space>
   marginLeft?: Responsive<Space>
   padding?: Responsive<Space>
-  paddingTop?: Responsive<Space>
-  paddingRight?: Responsive<Space>
-  paddingBottom?: Responsive<Space>
-  paddingLeft?: Responsive<Space>
+  paddingtops?: Responsive<Space>
+  paddingrights?: Responsive<Space>
+  paddingbottoms?: Responsive<Space>
+  paddinglefts?: Responsive<Space>
 }
 
 const variants = {
   extraSmall: {
     fontSize: 'extraSmall',
     letterSpacing: 0,
-    lineHeight: 0,
+    lineheights: 0,
   },
   small: {
     fontSize: 'small',
     letterSpacing: 1,
-    lineHeight: 1,
+    lineheights: 1,
   },
   medium: {
     fontSize: 'medium',
     letterSpacing: 2,
-    lineHeight: 2,
+    lineheights: 2,
   },
   mediumLarge: {
     fontSize: 'mediumLarge',
     letterSpacing: 3,
-    lineHeight: 3,
+    lineheights: 3,
   },
   large: {
     fontSize: 'large',
     letterSpacing: 4,
-    lineHeight: 4,
+    lineheights: 4,
   },
   extraLarge: {
     fontSize: 'extraLarge',
     letterSpacing: 5,
-    lineHeight: 5,
+    lineheights: 5,
   },
 }
 
@@ -85,7 +85,7 @@ const variants = {
  * 변형, 색상, 타이포그래피, 레이아웃, 스페이스 관련 Props 추가
  */
 const Text = styled.span<TextProps>`
-  ${({ variant, fontSize, letterSpacing, lineHeight, theme }) => {
+  ${({ variant, fontSize, letterSpacing, lineheights, theme }) => {
     // 변형 스타일에 적용
     if (variant && variants[variant]) {
       const styles = []
@@ -95,16 +95,16 @@ const Text = styled.span<TextProps>`
         styles.push(
           toPropValue('letter-spacing', variants[variant].letterSpacing, theme),
         )
-      !lineHeight &&
+      !lineheights &&
         styles.push(
-          toPropValue('line-height', variants[variant].lineHeight, theme),
+          toPropValue('line-height', variants[variant].lineheights, theme),
         )
       return styles.join('\n')
     }
   }}
   ${(props) => toPropValue('font-size', props.fontSize, props.theme)}
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
-  ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
+  ${(props) => toPropValue('line-height', props.lineheights, props.theme)}
   ${(props) => toPropValue('color', props.color, props.theme)}
   ${(props) => toPropValue('background-color', props.backgroundColor, props.theme)}
   ${(props) => toPropValue('width', props.width, props.theme)}
@@ -120,10 +120,10 @@ const Text = styled.span<TextProps>`
   ${(props) => toPropValue('margin-bottom', props.marginBottom, props.theme)}
   ${(props) => toPropValue('margin-right', props.marginRight, props.theme)}
   ${(props) => toPropValue('padding', props.padding, props.theme)}
-  ${(props) => toPropValue('padding-top', props.paddingTop, props.theme)}
-  ${(props) => toPropValue('padding-left', props.paddingLeft, props.theme)}
-  ${(props) => toPropValue('padding-bottom', props.paddingBottom, props.theme)}
-  ${(props) => toPropValue('padding-right', props.paddingRight, props.theme)}
+  ${(props) => toPropValue('padding-top', props.paddingtops, props.theme)}
+  ${(props) => toPropValue('padding-left', props.paddinglefts, props.theme)}
+  ${(props) => toPropValue('padding-bottom', props.paddingbottoms, props.theme)}
+  ${(props) => toPropValue('padding-right', props.paddingrights, props.theme)}
 `
 
 Text.defaultProps = {
